@@ -1,4 +1,4 @@
-class LangingPagesController < ApplicationController
+class LandingPagesController < ApplicationController
   def home
     #we'll need postings
   end
