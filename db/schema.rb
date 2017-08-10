@@ -17,10 +17,12 @@ ActiveRecord::Schema.define(version: 20170810053942) do
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
-    t.bigint "user_id_id"
+    t.bigint "user_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_comments_on_user_id_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -33,16 +35,16 @@ ActiveRecord::Schema.define(version: 20170810053942) do
     t.string "tag"
     t.date "close_date"
     t.text "description"
-    t.bigint "user_id_id"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id_id"], name: "index_posts_on_user_id_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.text "first_name"
     t.text "last_name"
-    t.text "user_id"
+    t.text "username"
     t.text "email"
     t.text "password_digest"
     t.datetime "created_at", null: false

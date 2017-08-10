@@ -10,7 +10,7 @@ class CreatePosts < ActiveRecord::Migration[5.1]
       t.string :tag
       t.date :close_date
       t.text :description
-      t.references :user_id
+      t.references :user
 
       t.timestamps
     end
