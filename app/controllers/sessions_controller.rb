@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 include SessionsHelper
   def new
-
+    @session = Session.new
   end
 
   def create

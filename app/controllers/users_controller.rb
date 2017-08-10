@@ -1,3 +1,4 @@
+
 class UsersController < ApplicationController
   include SessionsHelper
 
