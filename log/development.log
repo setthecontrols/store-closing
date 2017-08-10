@@ -6197,3 +6197,176 @@ ActionController::RoutingError (uninitialized constant SessionsController::Sessi
   
 app/controllers/sessions_controller.rb:2:in `<class:SessionsController>'
 app/controllers/sessions_controller.rb:1:in `<top (required)>'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 12:27:50 -0700
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (uninitialized constant SessionsController::SessionsHelper):
+  
+app/controllers/sessions_controller.rb:2:in `<class:SessionsController>'
+app/controllers/sessions_controller.rb:1:in `<top (required)>'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 12:32:24 -0700
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant SessionsController::Session):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 12:40:55 -0700
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant SessionsController::Session):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:42:10 -0700
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+  validates: :email, :user_id, uniqueness, true
+            ^
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: Can't assign to true
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected '\n', expecting '='):
+  
+app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+app/models/user.rb:5: Can't assign to true
+app/models/user.rb:5: syntax error, unexpected '\n', expecting '='
+app/controllers/users_controller.rb:17:in `new'
+Started GET "/" for 127.0.0.1 at 2017-08-10 12:42:47 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 282ms (Views: 278.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:42:50 -0700
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+  validates: :email, :user_id, uniqueness, true
+            ^
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: Can't assign to true
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected '\n', expecting '='):
+  
+app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+app/models/user.rb:5: Can't assign to true
+app/models/user.rb:5: syntax error, unexpected '\n', expecting '='
+app/controllers/users_controller.rb:17:in `new'
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:43:16 -0700
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+  validates: :email, :user_id, uniqueness true
+            ^
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+  validates: :first_name, :last_name, :password_digest, presence: true
+            ^):
+  
+app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+app/controllers/users_controller.rb:17:in `new'
+Started GET "/" for 127.0.0.1 at 2017-08-10 12:43:33 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 41ms (Views: 36.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:43:35 -0700
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/tonysaric/Desktop/store-closing/app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+  validates: :email, :user_id, uniqueness: true
+            ^
+/Users/tonysaric/Desktop/store-closing/app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+  validates: :first_name, :last_name, :password_digest, presence: true
+            ^):
+  
+app/models/user.rb:5: syntax error, unexpected ':', expecting keyword_end
+app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+app/controllers/users_controller.rb:17:in `new'
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:25 -0700
+Processing by UsersController#new as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/tonysaric/Desktop/store-closing/app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+  validates: :first_name, :last_name, :password_digest, presence: true
+            ^):
+  
+app/models/user.rb:6: syntax error, unexpected ':', expecting keyword_end
+app/controllers/users_controller.rb:17:in `new'
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:32 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (27.5ms)
+Completed 200 OK in 99ms (Views: 45.2ms | ActiveRecord: 25.7ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:34 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 37ms (Views: 33.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:38 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 33ms (Views: 30.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 12:44:43 -0700
+Processing by SessionsController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant SessionsController::Session):
+  
+app/controllers/sessions_controller.rb:4:in `new'
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:45 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 22ms (Views: 18.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/register" for 127.0.0.1 at 2017-08-10 12:44:46 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 36ms (Views: 33.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 12:44:53 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 27ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 12:44:56 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 20ms (Views: 17.8ms | ActiveRecord: 0.0ms)
+
+
