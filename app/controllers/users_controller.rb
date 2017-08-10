@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login
-      flash.notice = "Welcome to Shit's Closing Down, '#{@user.username}'!"
+      flash.notice = "Welcome to Shit's Closing Down, '#{@user.user_id}'!"
       redirect_to @user
     else
       flash.notice = "There was a problem creating your ID.  Please use a valid email address and passowrd and try again."
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-     params.require(:user).permit(:first_name, :last_name, :email, :username, :password)
+     params.require(:user).permit(:first_name, :last_name, :email, :user_id, :password)
   end
 
 end
