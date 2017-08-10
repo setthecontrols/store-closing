@@ -8321,3 +8321,393 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 69ms (Views: 34.2ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/users/2" for 127.0.0.1 at 2017-08-10 15:45:33 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 49ms (Views: 44.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2017-08-10 15:45:34 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 15:45:34 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 50ms (Views: 45.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 15:45:41 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:21: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:23: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/sessions/new.html.erb:21: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/sessions/new.html.erb:23: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 15:47:08 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.1ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+'.freeze;@output_buffer.append=( end  );
+                                    ^
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2017-08-10 15:47:16 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 37ms (Views: 34.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 15:47:19 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+'.freeze;@output_buffer.append=( end  );
+                                    ^
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2017-08-10 15:49:19 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 35ms (Views: 32.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 15:49:21 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 32ms (Views: 30.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 15:49:24 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+'.freeze;@output_buffer.append=( end  );
+                                    ^
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/sessions/new.html.erb:20: syntax error, unexpected keyword_end
+app/views/sessions/new.html.erb:23: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/new.html.erb:25: syntax error, unexpected keyword_end, expecting ')'
+Started PUT "/__web_console/repl_sessions/645307313195c5b381a1b0d394a20eba" for 127.0.0.1 at 2017-08-10 15:54:46 -0700
+Started PUT "/__web_console/repl_sessions/645307313195c5b381a1b0d394a20eba" for 127.0.0.1 at 2017-08-10 15:54:47 -0700
+Started PUT "/__web_console/repl_sessions/645307313195c5b381a1b0d394a20eba" for 127.0.0.1 at 2017-08-10 15:54:50 -0700
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:04:14 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 34ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:04:16 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 29ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:04:21 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.3ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:16: syntax error, unexpected keyword_end
+'.freeze;@output_buffer.append=( end );
+                                    ^
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:19: syntax error, unexpected keyword_ensure, expecting ')'
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:21: syntax error, unexpected keyword_end, expecting ')'):
+  
+app/views/sessions/new.html.erb:16: syntax error, unexpected keyword_end
+app/views/sessions/new.html.erb:19: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/sessions/new.html.erb:21: syntax error, unexpected keyword_end, expecting ')'
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:04:32 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 37ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:04:34 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 45ms (Views: 40.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2017-08-10 16:04:39 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:04:39 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 35ms (Views: 32.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:04:41 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.4ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:20: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/sessions/new.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/sessions/new.html.erb:20: syntax error, unexpected end-of-input, expecting keyword_end
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:05:07 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.7ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: 
+    2: <h1> JQuery! </h1>
+    3: 
+    4: <%= form_for (@user) do |f|%>
+    5: 
+    6: <div class="input-group">
+    7:   <span class="input-group-addon" id="basic-addon2">Email</span>
+  
+app/views/sessions/new.html.erb:4:in `_app_views_sessions_new_html_erb__2779499573761124315_70317468126640'
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:10:39 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 35ms (Views: 32.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 16:10:42 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 37ms (Views: 34.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:10:44 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (3.8ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: 
+    2: <h1> JQuery! </h1>
+    3: 
+    4: <%= form_for (@user) do |f|%>
+    5: 
+    6: <div class="input-group">
+    7:   <span class="input-group-addon" id="basic-addon2">Email</span>
+  
+app/views/sessions/new.html.erb:4:in `_app_views_sessions_new_html_erb__2779499573761124315_70317513787240'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:10:53 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:4: syntax error, unexpected ',', expecting ')'
+...er.append=  form_for (:session, url: login_path) do |f|@outp...
+...                               ^
+/Users/maktheresa/Desktop/projects/store-closing/app/views/sessions/new.html.erb:18: syntax error, unexpected keyword_ensure, expecting end-of-input):
+  
+app/views/sessions/new.html.erb:4: syntax error, unexpected ',', expecting ')'
+app/views/sessions/new.html.erb:18: syntax error, unexpected keyword_ensure, expecting end-of-input
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:14:53 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (324.3ms)
+Completed 500 Internal Server Error in 331ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `login_path' for #<#<Class:0x007fe823949c70>:0x007fe823364288>):
+    1: 
+    2: <h1> JQuery! </h1>
+    3: 
+    4: <%= form_for(:session, url: login_path) do |f| %>
+    5: 
+    6:   <%= f.label :email %>
+    7:   <%= f.email_field :email %>
+  
+app/views/sessions/new.html.erb:4:in `_app_views_sessions_new_html_erb__2779499573761124315_70317499950600'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:15:55 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (31.2ms)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/sessions/new" for 127.0.0.1 at 2017-08-10 16:16:11 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/sessions/new"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started POST "/sessions/new" for 127.0.0.1 at 2017-08-10 16:17:39 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/sessions/new"):
+  
+actionpack (5.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.3) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.3) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.3) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.3) lib/rails/engine.rb:522:in `call'
+puma (3.9.1) lib/puma/configuration.rb:224:in `call'
+puma (3.9.1) lib/puma/server.rb:602:in `handle_request'
+puma (3.9.1) lib/puma/server.rb:435:in `process_client'
+puma (3.9.1) lib/puma/server.rb:299:in `block in run'
+puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:17:48 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (4.9ms)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"show", :controller=>"users"}, missing required keys: [:id]):
+    1: 
+    2: <h1> JQuery! </h1>
+    3: 
+    4: <%= form_for(:session, url: user_path) do |f| %>
+    5: 
+    6:   <%= f.label :email %>
+    7:   <%= f.email_field :email %>
+  
+app/views/sessions/new.html.erb:4:in `_app_views_sessions_new_html_erb__2779499573761124315_70317504227700'
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 16:23:54 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 50ms (Views: 28.7ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 16:23:54 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 39ms (Views: 37.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 16:23:56 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 37ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 16:23:58 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 34ms (Views: 31.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-08-10 16:24:14 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5enCa86CL9T2bU18RZWkRThMV425A6dVocJ8SuSCG+rLmCHDSSIYIIfiFz5oEJqcbkHH0GyEo7Ue9bGjkEYCsA==", "session"=>{"email"=>"bill@bill.com", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bill@bill.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `authenticate' for #<User:0x007fe81d63c8d0>):
+  
+app/controllers/sessions_controller.rb:9:in `create'
