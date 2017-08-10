@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  has_many: businesses
-  has_many: postings
+  has_many: stores
   has_many: comments
 
   validates: :email, :user_id, uniqueness, true
