@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
-  resources :posts
-  resources :users
+  resources :users do
+    resources :posts
+    end
+  end
   resources :sessions
 
   get '/register' => 'users#new'
