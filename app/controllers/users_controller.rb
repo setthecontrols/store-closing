@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login
-      flash.notice = "Welcome to Shit's Closing Down, '#{@user.user_id}'!"
+      flash.notice = "Welcome to Shit's Closing Down, '#{@user.username}'!"
       redirect_to @user
     else
       flash.notice = "There was a problem creating your ID.  Please use a valid email address and passowrd and try again."
