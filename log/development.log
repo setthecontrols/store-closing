@@ -11517,3 +11517,66 @@ ActionView::Template::Error (undefined method `user_id' for #<User:0x007fb66027b
   
 app/views/users/new.html.erb:21:in `block in _app_views_users_new_html_erb__490146902232746427_70210636338160'
 app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__490146902232746427_70210636338160'
+Started GET "/" for 127.0.0.1 at 2017-08-10 17:14:47 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 32ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 17:14:49 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (1011.2ms)
+Completed 200 OK in 1046ms (Views: 1043.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-10 17:15:08 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dtruM1Ud+SocabN46GJYkVMx6SEKcBzwu8Rmr1W6nLL9tlUJVBicIMwWsNltvgLb0EY5HX0Ll9JSxU0TLiN7rA==", "user"=>{"first_name"=>"bill", "last_name"=>"bill", "email"=>"bill@bill.com", "username"=>"bill", "password_digest"=>"[FILTERED]"}, "commit"=>"Create User"}
+Unpermitted parameters: :username, :password_digest
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/users/new
+Completed 302 Found in 8ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 17:15:08 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 37ms (Views: 31.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-10 17:15:32 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DSjEqYBygyR6HCe7WBDwUodgX6qcXzJ86B0+LQ9EZ9yQOm5G3BtJqLTbglnoU4Y7nQFwLO8Zq9YXyj+Pc5Pa8A==", "user"=>{"first_name"=>"bill", "last_name"=>"bill", "email"=>"bill@bill.com", "username"=>"bill", "password_digest"=>"[FILTERED]"}, "commit"=>"Create User"}
+Unpermitted parameters: :username, :password_digest
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Redirected to http://localhost:3000/users/new
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 17:15:32 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 33ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+Started POST "/users" for 127.0.0.1 at 2017-08-10 17:18:07 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qD+cG+fUomv7Thn5k0x4sepErXDRxrDC3odFzQnfpLY1LTb0u71o5zWJvBsjDw7Y8CWC9qKAKWghUERvdQgZmg==", "user"=>{"first_name"=>"bill", "last_name"=>"bill", "email"=>"bill@bill.com", "username"=>"bill", "password_digest"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "bill"], ["last_name", "bill"], ["username", "bill"], ["email", "bill@bill.com"], ["password_digest", "bill"], ["created_at", "2017-08-11 00:18:07.271051"], ["updated_at", "2017-08-11 00:18:07.271051"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 5.9ms)
+
+
+  
+NoMethodError (undefined method `user_id' for #<User:0x007fb65cba5b70>):
+  
+app/controllers/users_controller.rb:8:in `create'
