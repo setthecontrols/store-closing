@@ -14574,3 +14574,876 @@ puma (3.9.1) lib/puma/server.rb:435:in `process_client'
 puma (3.9.1) lib/puma/server.rb:299:in `block in run'
 puma (3.9.1) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
 >>>>>>> 11db54815d7b96c04318ccacfaff9051b603c3f9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1196397824940587850)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1196397824940587850)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-08-10 17:32:33 -0700
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  Rendered posts/index.html.erb within layouts/application (7.6ms)
+Completed 200 OK in 423ms (Views: 393.5ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 17:32:36 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (857.8ms)
+Completed 200 OK in 915ms (Views: 908.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-08-10 17:32:43 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Q6UyWra4PuE4spfZgfQmUXHFVCIuFWc39RcDf6ErQkRt1NHyMRgJFUk9zZuscRiIJ8jEf/uSY9dKIM6W1e9bHg==", "session"=>{"email"=>"paco@paco.com", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "paco@paco.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 15.3ms)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (209.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "store-closing_development"[0m
+  [1m[35m (188.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "store-closing_test"[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1196397824940587850)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateUsers (20170807232439)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "first_name" text, "last_name" text, "username" text, "email" text, "password_digest" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170807232439"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20170810053758)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "posts" ("id" bigserial primary key, "name" character varying, "address" character varying, "city" character varying, "state" character varying, "zip" character varying, "phone_number" character varying, "tag" character varying, "close_date" date, "description" text, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_posts_on_user_id" ON "posts"  ("user_id")[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170810053758"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateComments (20170810053942)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "comment" text, "user_id" bigint, "post_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_user_id" ON "comments"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170810053942"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-08-11 00:33:48.749043"], ["updated_at", "2017-08-11 00:33:48.749043"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1196397824940587850)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2017-08-10 17:34:00 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  Rendered posts/index.html.erb within layouts/application (8.0ms)
+Completed 200 OK in 430ms (Views: 402.2ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2017-08-10 17:34:02 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (777.2ms)
+Completed 200 OK in 859ms (Views: 811.0ms | ActiveRecord: 14.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2017-08-10 17:35:12 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qLZoRq+UYDyqKCoH7l5tr1fyShvhmQcpbgd81Ky8AsQj2tN8rpEFNnpXKaZrgjfl1IWaJ5bijAuHBldo1yXl2g==", "user"=>{"first_name"=>"dick", "last_name"=>"dick", "email"=>"dick@dick.com", "username"=>"dick", "password_digest"=>"[FILTERED]"}, "commit"=>"Create User"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "dick"], ["last_name", "dick"], ["username", "dick"], ["email", "dick@dick.com"], ["password_digest", "dick"], ["created_at", "2017-08-11 00:35:12.989370"], ["updated_at", "2017-08-11 00:35:12.989370"]]
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 18ms (ActiveRecord: 4.0ms)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2017-08-10 17:35:13 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 58ms (Views: 44.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/logout" for 127.0.0.1 at 2017-08-10 17:35:18 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-08-10 17:35:19 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  Rendered posts/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 38ms (Views: 33.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sessions/new" for 127.0.0.1 at 2017-08-10 17:35:20 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 47ms (Views: 43.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for 127.0.0.1 at 2017-08-10 17:35:28 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"swX8n0sf464h/RlOMOVkwxuTWKaDS1rI0CpUq6NiDg6ddB83zL/UWlByQwwdYFoaTZ7I+1bMXihvHZlC16YXVA==", "session"=>{"email"=>"dick@dick.com", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dick@dick.com"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 1.8ms)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Nicole"], ["last_name", "Braun"], ["username", "Rodrik Greyjoy"], ["email", "joannie_farrell@langworth.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.601197"], ["updated_at", "2017-08-11 00:36:00.601197"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Rudolph"], ["last_name", "Gleason"], ["username", "Illifer"], ["email", "carmella_wisoky@leannon.org"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.605820"], ["updated_at", "2017-08-11 00:36:00.605820"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Maryam"], ["last_name", "Hirthe"], ["username", "Bowen Marsh"], ["email", "fay.wilderman@stromanhickle.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.609405"], ["updated_at", "2017-08-11 00:36:00.609405"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Lucas"], ["last_name", "Sipes"], ["username", "Jeyne Lothston"], ["email", "norma.kuhic@altenwerthdonnelly.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.613111"], ["updated_at", "2017-08-11 00:36:00.613111"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Meredith"], ["last_name", "Williamson"], ["username", "Rycherd Crane"], ["email", "domenica@denesik.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.617043"], ["updated_at", "2017-08-11 00:36:00.617043"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Ernestine"], ["last_name", "Kihn"], ["username", "Harodon"], ["email", "itzel@moenwalsh.info"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.621157"], ["updated_at", "2017-08-11 00:36:00.621157"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Sheridan"], ["last_name", "Altenwerth"], ["username", "Brogg"], ["email", "augustus.vandervort@bergstrom.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.624996"], ["updated_at", "2017-08-11 00:36:00.624996"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Corbin"], ["last_name", "Hagenes"], ["username", "Hairy Hal"], ["email", "annamae@gleason.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.628793"], ["updated_at", "2017-08-11 00:36:00.628793"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Sylvia"], ["last_name", "Lindgren"], ["username", "Rickard Tyrell"], ["email", "gabe_farrell@haagkoch.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.632449"], ["updated_at", "2017-08-11 00:36:00.632449"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Micah"], ["last_name", "Donnelly"], ["username", "Jeyne Swann"], ["email", "rhea_marquardt@wiegand.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.636265"], ["updated_at", "2017-08-11 00:36:00.636265"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Westley"], ["last_name", "Stanton"], ["username", "Walys Flowers"], ["email", "abagail@bins.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.639951"], ["updated_at", "2017-08-11 00:36:00.639951"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Milton"], ["last_name", "Bergnaum"], ["username", "Moribald Chester"], ["email", "jamar@swift.co"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.643566"], ["updated_at", "2017-08-11 00:36:00.643566"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Mylene"], ["last_name", "Haley"], ["username", "Hizdahr zo Loraq"], ["email", "ladarius_jacobi@hilpertdonnelly.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.647454"], ["updated_at", "2017-08-11 00:36:00.647454"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Nova"], ["last_name", "Langosh"], ["username", "Tanton Fossoway"], ["email", "pasquale_dubuque@gaylord.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.651668"], ["updated_at", "2017-08-11 00:36:00.651668"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Kyla"], ["last_name", "Satterfield"], ["username", "Androw Frey"], ["email", "caesar.klocko@parker.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.655846"], ["updated_at", "2017-08-11 00:36:00.655846"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Sibyl"], ["last_name", "Rogahn"], ["username", "Arthur Dayne"], ["email", "eula_steuber@volkman.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.659709"], ["updated_at", "2017-08-11 00:36:00.659709"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Jan"], ["last_name", "Walsh"], ["username", "Barbrey Dustin"], ["email", "arvilla_kunde@yostlangworth.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.663740"], ["updated_at", "2017-08-11 00:36:00.663740"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Rubie"], ["last_name", "Trantow"], ["username", "Harras Harlaw"], ["email", "allan.ortiz@starkvolkman.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.667293"], ["updated_at", "2017-08-11 00:36:00.667293"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Arne"], ["last_name", "Hamill"], ["username", "Ternesio Terys"], ["email", "alexandre_treutel@cummings.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.671177"], ["updated_at", "2017-08-11 00:36:00.671177"]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Chris"], ["last_name", "McClure"], ["username", "Arson"], ["email", "dorian_cronin@nolan.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.677441"], ["updated_at", "2017-08-11 00:36:00.677441"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Isaac"], ["last_name", "Gutkowski"], ["username", "Eldred Codd"], ["email", "verna_jakubowski@hirthebergstrom.org"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.680936"], ["updated_at", "2017-08-11 00:36:00.680936"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Orland"], ["last_name", "Tremblay"], ["username", "Shyra"], ["email", "aliyah@deckowsauer.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.684727"], ["updated_at", "2017-08-11 00:36:00.684727"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Gina"], ["last_name", "Ruecker"], ["username", "Lymond Lychester"], ["email", "dangelo@gutkowski.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.688296"], ["updated_at", "2017-08-11 00:36:00.688296"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Zander"], ["last_name", "Langosh"], ["username", "Jon Hollard"], ["email", "ricky@johns.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.692133"], ["updated_at", "2017-08-11 00:36:00.692133"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Eloisa"], ["last_name", "Hegmann"], ["username", "Roose Ryswell"], ["email", "marco.fritsch@hane.info"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.695978"], ["updated_at", "2017-08-11 00:36:00.695978"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Hillary"], ["last_name", "Predovic"], ["username", "Andrey Dalt"], ["email", "albin@berge.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.700030"], ["updated_at", "2017-08-11 00:36:00.700030"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Vernon"], ["last_name", "Rosenbaum"], ["username", "Gerold Hightower"], ["email", "kamren_simonis@gutmannhuel.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.704496"], ["updated_at", "2017-08-11 00:36:00.704496"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Rossie"], ["last_name", "Sipes"], ["username", "Watty"], ["email", "mia_mraz@pollichcruickshank.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.708993"], ["updated_at", "2017-08-11 00:36:00.708993"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Maxine"], ["last_name", "Champlin"], ["username", "Denyse Hightower"], ["email", "ila@reilly.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.712860"], ["updated_at", "2017-08-11 00:36:00.712860"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Kirstin"], ["last_name", "Bashirian"], ["username", "Ragwyle"], ["email", "megane@cole.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.716707"], ["updated_at", "2017-08-11 00:36:00.716707"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Lindsay"], ["last_name", "Rodriguez"], ["username", "Cayn"], ["email", "jordane@watsica.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.720246"], ["updated_at", "2017-08-11 00:36:00.720246"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Elvis"], ["last_name", "Swift"], ["username", "Walgrave"], ["email", "effie_beatty@ornjaskolski.com"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.724272"], ["updated_at", "2017-08-11 00:36:00.724272"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Henry"], ["last_name", "Brakus"], ["username", "Raynard Ruttiger"], ["email", "stephen.tromp@champlin.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.728306"], ["updated_at", "2017-08-11 00:36:00.728306"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Keven"], ["last_name", "Tromp"], ["username", "Kromm"], ["email", "meagan_kovacek@kovacekbeer.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.732425"], ["updated_at", "2017-08-11 00:36:00.732425"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Isadore"], ["last_name", "Strosin"], ["username", "Myrielle Lannister"], ["email", "andrew@beer.com"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.745446"], ["updated_at", "2017-08-11 00:36:00.745446"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Roselyn"], ["last_name", "Wintheiser"], ["username", "Aethan"], ["email", "gregg@marquardt.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.749599"], ["updated_at", "2017-08-11 00:36:00.749599"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Alexys"], ["last_name", "Jerde"], ["username", "Munda"], ["email", "edythe@schaefertoy.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.753916"], ["updated_at", "2017-08-11 00:36:00.753916"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Katelynn"], ["last_name", "Wyman"], ["username", "Eldred Codd"], ["email", "buck@willms.com"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.757836"], ["updated_at", "2017-08-11 00:36:00.757836"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Lilla"], ["last_name", "Daniel"], ["username", "Weese"], ["email", "hailee@lemke.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.762209"], ["updated_at", "2017-08-11 00:36:00.762209"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Ethyl"], ["last_name", "Bernier"], ["username", "Ronnel Arryn"], ["email", "antwon_schiller@schinner.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.766312"], ["updated_at", "2017-08-11 00:36:00.766312"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Adolfo"], ["last_name", "McClure"], ["username", "Jyanna Frey"], ["email", "sallie_stamm@oberbrunner.info"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.770761"], ["updated_at", "2017-08-11 00:36:00.770761"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Emil"], ["last_name", "Ratke"], ["username", "Oswell Kettleblack"], ["email", "darien@stoltenberglittle.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.775190"], ["updated_at", "2017-08-11 00:36:00.775190"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Destiney"], ["last_name", "Harber"], ["username", "Beron Stark"], ["email", "lennie@ullrichturcotte.name"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.780922"], ["updated_at", "2017-08-11 00:36:00.780922"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Abdiel"], ["last_name", "Hickle"], ["username", "Sylwa Paege"], ["email", "emmanuel@konopelski.com"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.784781"], ["updated_at", "2017-08-11 00:36:00.784781"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Leta"], ["last_name", "Homenick"], ["username", "Dale Drumm"], ["email", "everette.blanda@reichel.co"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.789025"], ["updated_at", "2017-08-11 00:36:00.789025"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Beryl"], ["last_name", "Doyle"], ["username", "Addam Velaryon"], ["email", "gerson@bergnaumhaag.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.793071"], ["updated_at", "2017-08-11 00:36:00.793071"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Laila"], ["last_name", "Schoen"], ["username", "Castos"], ["email", "tanya.bartell@lueilwitz.org"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.797233"], ["updated_at", "2017-08-11 00:36:00.797233"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Gudrun"], ["last_name", "Corwin"], ["username", "Bryen Farring"], ["email", "lynn_bosco@wilderman.info"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.801316"], ["updated_at", "2017-08-11 00:36:00.801316"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Raleigh"], ["last_name", "Bashirian"], ["username", "Rhonda Rowan"], ["email", "andres@thompson.com"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.804887"], ["updated_at", "2017-08-11 00:36:00.804887"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Willie"], ["last_name", "Koch"], ["username", "Allar Deem"], ["email", "gina@blickshanahan.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.809097"], ["updated_at", "2017-08-11 00:36:00.809097"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Garett"], ["last_name", "Jones"], ["username", "Belgrave"], ["email", "domenico.wiegand@connelly.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.812840"], ["updated_at", "2017-08-11 00:36:00.812840"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Christelle"], ["last_name", "Haag"], ["username", "Kyle"], ["email", "naomi@faheystreich.org"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.816845"], ["updated_at", "2017-08-11 00:36:00.816845"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Sylvan"], ["last_name", "Sanford"], ["username", "Salloreon"], ["email", "coy@bins.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.820928"], ["updated_at", "2017-08-11 00:36:00.820928"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Domenick"], ["last_name", "Reichert"], ["username", "Genna Lannister"], ["email", "lucius_sipes@larson.co"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.825093"], ["updated_at", "2017-08-11 00:36:00.825093"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Deja"], ["last_name", "Runolfsson"], ["username", "Ilyn Payne"], ["email", "joan_kunde@hanechristiansen.info"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.828782"], ["updated_at", "2017-08-11 00:36:00.828782"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dedrick"], ["last_name", "Wilkinson"], ["username", "Lucas Blackwood"], ["email", "geovanny@wisozk.biz"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.833156"], ["updated_at", "2017-08-11 00:36:00.833156"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Samir"], ["last_name", "Trantow"], ["username", "Arron Qorgyle"], ["email", "bridgette.bernier@ruel.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.837338"], ["updated_at", "2017-08-11 00:36:00.837338"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Ulises"], ["last_name", "Gerhold"], ["username", "Puddingfoot"], ["email", "bernadette_mann@botsford.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.841030"], ["updated_at", "2017-08-11 00:36:00.841030"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Madelyn"], ["last_name", "Corkery"], ["username", "Danwell Frey"], ["email", "edd_huel@emmerich.net"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.845125"], ["updated_at", "2017-08-11 00:36:00.845125"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "last_name", "username", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Wilfredo"], ["last_name", "Conn"], ["username", "Aethan"], ["email", "ramiro.murazik@huelblock.io"], ["password_digest", "password"], ["created_at", "2017-08-11 00:36:00.849003"], ["updated_at", "2017-08-11 00:36:00.849003"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Larkin, Feeney and Reynolds"], ["address", "42359 Hoeger Rapids"], ["city", "Alyceview"], ["state", "Delaware"], ["zip", "87531"], ["phone_number", "812.017.5512"], ["tag", "Incredible Paper Bottle"], ["close_date", "2017-08-25"], ["description", "Try to connect the PCI interface, maybe it will transmit the cross-platform bus!"], ["user_id", 41], ["created_at", "2017-08-11 00:36:00.955764"], ["updated_at", "2017-08-11 00:36:00.955764"]]
+  [1m[35m (40.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Reichel, Smitham and Kertzmann"], ["address", "80771 Gerhold Trail"], ["city", "Lake Claudie"], ["state", "Michigan"], ["zip", "96986"], ["phone_number", "1-298-717-2183"], ["tag", "Sleek Paper Keyboard"], ["close_date", "2017-08-31"], ["description", "We need to generate the redundant EXE hard drive!"], ["user_id", 19], ["created_at", "2017-08-11 00:36:01.006714"], ["updated_at", "2017-08-11 00:36:01.006714"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Predovic-Sanford"], ["address", "66993 Baumbach Springs"], ["city", "Lake Ozziebury"], ["state", "Washington"], ["zip", "48114-6350"], ["phone_number", "999.620.4798"], ["tag", "Heavy Duty Copper Table"], ["close_date", "2017-08-31"], ["description", "Connecting the sensor won't do anything, we need to navigate the neural ib transmitter!"], ["user_id", 26], ["created_at", "2017-08-11 00:36:01.016924"], ["updated_at", "2017-08-11 00:36:01.016924"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Lakin, Kuvalis and Lockman"], ["address", "6596 Lemke Port"], ["city", "West Torrance"], ["state", "Alabama"], ["zip", "19960"], ["phone_number", "(434) 197-6077"], ["tag", "Incredible Plastic Bottle"], ["close_date", "2017-08-14"], ["description", "I'll connect the virtual SAS monitor, that should pixel the XSS system!"], ["user_id", 14], ["created_at", "2017-08-11 00:36:01.026217"], ["updated_at", "2017-08-11 00:36:01.026217"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Brekke and Sons"], ["address", "66823 Stark Views"], ["city", "Shieldsfort"], ["state", "Nevada"], ["zip", "16991-9888"], ["phone_number", "(118) 880-3617"], ["tag", "Durable Cotton Computer"], ["close_date", "2017-08-21"], ["description", "You can't quantify the pixel without quantifying the multi-byte SCSI firewall!"], ["user_id", 7], ["created_at", "2017-08-11 00:36:01.036231"], ["updated_at", "2017-08-11 00:36:01.036231"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Quitzon, Zieme and Wilkinson"], ["address", "48703 Vern Center"], ["city", "East Lindaside"], ["state", "Arkansas"], ["zip", "87449"], ["phone_number", "371-746-9201"], ["tag", "Gorgeous Iron Pants"], ["close_date", "2017-08-11"], ["description", "Use the digital XSS monitor, then you can index the neural program!"], ["user_id", 45], ["created_at", "2017-08-11 00:36:01.046416"], ["updated_at", "2017-08-11 00:36:01.046416"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Heller, Rutherford and Carter"], ["address", "31936 Quinn Roads"], ["city", "Wiegandview"], ["state", "South Dakota"], ["zip", "17709"], ["phone_number", "(589) 297-0253"], ["tag", "Fantastic Wool Pants"], ["close_date", "2017-08-31"], ["description", "The AI firewall is down, program the solid state application so we can reboot the SSL sensor!"], ["user_id", 52], ["created_at", "2017-08-11 00:36:01.057134"], ["updated_at", "2017-08-11 00:36:01.057134"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Denesik-Friesen"], ["address", "896 Saige Crest"], ["city", "East Karsonshire"], ["state", "New Mexico"], ["zip", "84262"], ["phone_number", "153-438-7030"], ["tag", "Mediocre Concrete Watch"], ["close_date", "2017-08-25"], ["description", "If we bypass the firewall, we can get to the RSS pixel through the haptic SMS application!"], ["user_id", 3], ["created_at", "2017-08-11 00:36:01.067976"], ["updated_at", "2017-08-11 00:36:01.067976"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Dibbert, Hand and Breitenberg"], ["address", "591 Boyle Pike"], ["city", "Wildermanfurt"], ["state", "Colorado"], ["zip", "12220-2496"], ["phone_number", "(977) 022-0276"], ["tag", "Heavy Duty Paper Clock"], ["close_date", "2017-08-25"], ["description", "Calculating the driver won't do anything, we need to quantify the cross-platform png matrix!"], ["user_id", 12], ["created_at", "2017-08-11 00:36:01.077442"], ["updated_at", "2017-08-11 00:36:01.077442"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Rippin-Ziemann"], ["address", "350 Greenfelder Keys"], ["city", "Sheldonchester"], ["state", "Michigan"], ["zip", "26414-8095"], ["phone_number", "449.794.9867"], ["tag", "Synergistic Leather Lamp"], ["close_date", "2017-08-30"], ["description", "Try to bypass the GB matrix, maybe it will back up the primary application!"], ["user_id", 39], ["created_at", "2017-08-11 00:36:01.087646"], ["updated_at", "2017-08-11 00:36:01.087646"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Ward Group"], ["address", "874 Jovani Hollow"], ["city", "Port Ozziefurt"], ["state", "Arkansas"], ["zip", "55355"], ["phone_number", "1-297-114-2087"], ["tag", "Enormous Copper Shoes"], ["close_date", "2017-09-02"], ["description", "Try to index the SDD matrix, maybe it will override the digital alarm!"], ["user_id", 40], ["created_at", "2017-08-11 00:36:01.098167"], ["updated_at", "2017-08-11 00:36:01.098167"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Thiel-O'Hara"], ["address", "90011 Zemlak Mountain"], ["city", "Lake Willis"], ["state", "Nevada"], ["zip", "94426"], ["phone_number", "703-069-1828"], ["tag", "Intelligent Aluminum Gloves"], ["close_date", "2017-08-26"], ["description", "We need to compress the optical SCSI feed!"], ["user_id", 23], ["created_at", "2017-08-11 00:36:01.108945"], ["updated_at", "2017-08-11 00:36:01.108945"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Robel-Schaden"], ["address", "668 Nadia Rapid"], ["city", "Lake Karolannborough"], ["state", "Delaware"], ["zip", "72863-4639"], ["phone_number", "1-644-881-7365"], ["tag", "Lightweight Linen Computer"], ["close_date", "2017-08-20"], ["description", "You can't bypass the alarm without synthesizing the neural IB card!"], ["user_id", 29], ["created_at", "2017-08-11 00:36:01.119052"], ["updated_at", "2017-08-11 00:36:01.119052"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Klocko-Reichel"], ["address", "164 Wilson Forge"], ["city", "Estellport"], ["state", "Kansas"], ["zip", "51697"], ["phone_number", "(465) 788-0630"], ["tag", "Rustic Wool Chair"], ["close_date", "2017-08-11"], ["description", "Use the mobile COM interface, then you can navigate the haptic firewall!"], ["user_id", 42], ["created_at", "2017-08-11 00:36:01.129421"], ["updated_at", "2017-08-11 00:36:01.129421"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Koepp Inc"], ["address", "25997 Blick Flats"], ["city", "Port Alyciaside"], ["state", "Kansas"], ["zip", "74324"], ["phone_number", "893-092-3638"], ["tag", "Sleek Wooden Shirt"], ["close_date", "2017-08-14"], ["description", "The CSS protocol is down, generate the virtual hard drive so we can connect the SMS interface!"], ["user_id", 12], ["created_at", "2017-08-11 00:36:01.138861"], ["updated_at", "2017-08-11 00:36:01.138861"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Rohan, Weissnat and Turner"], ["address", "589 Lura Ramp"], ["city", "Littelport"], ["state", "Maryland"], ["zip", "66797"], ["phone_number", "877-675-5419"], ["tag", "Sleek Cotton Chair"], ["close_date", "2017-09-01"], ["description", "You can't hack the alarm without backing up the redundant AGP panel!"], ["user_id", 9], ["created_at", "2017-08-11 00:36:01.149597"], ["updated_at", "2017-08-11 00:36:01.149597"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Block, Graham and Schamberger"], ["address", "731 Grady Parkways"], ["city", "Port Jaedenville"], ["state", "Nebraska"], ["zip", "75846"], ["phone_number", "741.553.6428"], ["tag", "Heavy Duty Cotton Pants"], ["close_date", "2017-08-30"], ["description", "Quantifying the feed won't do anything, we need to index the bluetooth http program!"], ["user_id", 26], ["created_at", "2017-08-11 00:36:01.160176"], ["updated_at", "2017-08-11 00:36:01.160176"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "McGlynn, Nicolas and Aufderhar"], ["address", "905 Donato Unions"], ["city", "Wolfshire"], ["state", "Mississippi"], ["zip", "32079-8388"], ["phone_number", "605-286-5345"], ["tag", "Aerodynamic Leather Plate"], ["close_date", "2017-08-22"], ["description", "The HDD feed is down, reboot the open-source pixel so we can quantify the SMTP bandwidth!"], ["user_id", 3], ["created_at", "2017-08-11 00:36:01.170748"], ["updated_at", "2017-08-11 00:36:01.170748"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Schultz and Sons"], ["address", "8507 Russel Gardens"], ["city", "Hoegerborough"], ["state", "Virginia"], ["zip", "40916-8279"], ["phone_number", "833-815-1429"], ["tag", "Awesome Paper Bottle"], ["close_date", "2017-08-22"], ["description", "Use the virtual COM panel, then you can copy the auxiliary interface!"], ["user_id", 20], ["created_at", "2017-08-11 00:36:01.180404"], ["updated_at", "2017-08-11 00:36:01.180404"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Deckow LLC"], ["address", "7086 Johanna Pine"], ["city", "Greenfeldermouth"], ["state", "Hawaii"], ["zip", "86468"], ["phone_number", "518.342.9426"], ["tag", "Durable Iron Clock"], ["close_date", "2017-08-18"], ["description", "I'll program the back-end RSS sensor, that should card the JBOD port!"], ["user_id", 26], ["created_at", "2017-08-11 00:36:01.189596"], ["updated_at", "2017-08-11 00:36:01.189596"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Ziemann-Becker"], ["address", "4979 Kshlerin Hills"], ["city", "Friesenshire"], ["state", "Arizona"], ["zip", "61862-8090"], ["phone_number", "1-426-687-3912"], ["tag", "Heavy Duty Rubber Watch"], ["close_date", "2017-08-24"], ["description", "If we hack the panel, we can get to the XML panel through the digital PNG card!"], ["user_id", 60], ["created_at", "2017-08-11 00:36:01.199610"], ["updated_at", "2017-08-11 00:36:01.199610"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Halvorson-Runte"], ["address", "1392 Schuster Mountain"], ["city", "New Jovany"], ["state", "Ohio"], ["zip", "58511"], ["phone_number", "(422) 189-0850"], ["tag", "Incredible Marble Plate"], ["close_date", "2017-08-19"], ["description", "Use the digital HDD bus, then you can parse the wireless protocol!"], ["user_id", 39], ["created_at", "2017-08-11 00:36:01.209305"], ["updated_at", "2017-08-11 00:36:01.209305"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Huels-Will"], ["address", "82846 Mekhi Route"], ["city", "Lake Abdullah"], ["state", "Indiana"], ["zip", "59449"], ["phone_number", "1-973-609-5215"], ["tag", "Rustic Marble Shoes"], ["close_date", "2017-08-29"], ["description", "Bypassing the card won't do anything, we need to compress the bluetooth scsi program!"], ["user_id", 54], ["created_at", "2017-08-11 00:36:01.218852"], ["updated_at", "2017-08-11 00:36:01.218852"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Jacobs, McCullough and Moore"], ["address", "3821 Bobby Mission"], ["city", "Mayermouth"], ["state", "South Carolina"], ["zip", "40873-2832"], ["phone_number", "873.423.8691"], ["tag", "Ergonomic Plastic Shoes"], ["close_date", "2017-08-18"], ["description", "I'll bypass the redundant SSL array, that should monitor the SCSI card!"], ["user_id", 38], ["created_at", "2017-08-11 00:36:01.228850"], ["updated_at", "2017-08-11 00:36:01.228850"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Smitham Group"], ["address", "8719 Auer Vista"], ["city", "Melvinaview"], ["state", "Virginia"], ["zip", "17966"], ["phone_number", "(138) 680-2930"], ["tag", "Synergistic Cotton Bench"], ["close_date", "2017-08-12"], ["description", "Try to hack the COM hard drive, maybe it will program the bluetooth microchip!"], ["user_id", 34], ["created_at", "2017-08-11 00:36:01.238418"], ["updated_at", "2017-08-11 00:36:01.238418"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "O'Hara, Collier and Weimann"], ["address", "12902 Klein Mews"], ["city", "Port Genesisshire"], ["state", "Arkansas"], ["zip", "11496"], ["phone_number", "447.321.5235"], ["tag", "Lightweight Aluminum Wallet"], ["close_date", "2017-08-15"], ["description", "We need to back up the redundant PNG bus!"], ["user_id", 28], ["created_at", "2017-08-11 00:36:01.248555"], ["updated_at", "2017-08-11 00:36:01.248555"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Armstrong-Beahan"], ["address", "478 Amani Greens"], ["city", "Port Caliview"], ["state", "Massachusetts"], ["zip", "45794-9046"], ["phone_number", "1-590-711-9235"], ["tag", "Lightweight Granite Watch"], ["close_date", "2017-08-12"], ["description", "Use the 1080p TCP program, then you can connect the online program!"], ["user_id", 13], ["created_at", "2017-08-11 00:36:01.258316"], ["updated_at", "2017-08-11 00:36:01.258316"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Torphy Inc"], ["address", "7556 Jayde Cove"], ["city", "East Leonorborough"], ["state", "Arizona"], ["zip", "38845-3294"], ["phone_number", "(578) 652-3080"], ["tag", "Awesome Marble Coat"], ["close_date", "2017-08-21"], ["description", "The IB hard drive is down, generate the wireless protocol so we can input the USB panel!"], ["user_id", 47], ["created_at", "2017-08-11 00:36:01.267984"], ["updated_at", "2017-08-11 00:36:01.267984"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Trantow, Becker and Graham"], ["address", "579 Lueilwitz Meadow"], ["city", "Quintenview"], ["state", "Nebraska"], ["zip", "60130-4385"], ["phone_number", "1-398-656-2038"], ["tag", "Synergistic Copper Car"], ["close_date", "2017-08-31"], ["description", "Try to transmit the COM sensor, maybe it will bypass the cross-platform matrix!"], ["user_id", 48], ["created_at", "2017-08-11 00:36:01.277641"], ["updated_at", "2017-08-11 00:36:01.277641"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Torp and Sons"], ["address", "95141 Caleigh Landing"], ["city", "East Kiley"], ["state", "South Dakota"], ["zip", "30643"], ["phone_number", "315-771-5117"], ["tag", "Synergistic Marble Clock"], ["close_date", "2017-08-14"], ["description", "We need to bypass the neural HTTP interface!"], ["user_id", 21], ["created_at", "2017-08-11 00:36:01.287223"], ["updated_at", "2017-08-11 00:36:01.287223"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Dickens-Hermann"], ["address", "801 Hiram Plain"], ["city", "Bartolettiberg"], ["state", "Utah"], ["zip", "20004"], ["phone_number", "1-845-910-1436"], ["tag", "Aerodynamic Aluminum Bag"], ["close_date", "2017-08-28"], ["description", "I'll transmit the wireless SMTP transmitter, that should feed the SMS circuit!"], ["user_id", 33], ["created_at", "2017-08-11 00:36:01.297817"], ["updated_at", "2017-08-11 00:36:01.297817"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Tromp, Gerlach and Hauck"], ["address", "5791 Goldner Throughway"], ["city", "New Keeley"], ["state", "Georgia"], ["zip", "47330-3443"], ["phone_number", "289-622-2025"], ["tag", "Awesome Plastic Table"], ["close_date", "2017-08-17"], ["description", "Try to connect the XML pixel, maybe it will bypass the primary protocol!"], ["user_id", 51], ["created_at", "2017-08-11 00:36:01.308415"], ["updated_at", "2017-08-11 00:36:01.308415"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Nader, Murazik and Connelly"], ["address", "6774 Gorczany Trail"], ["city", "Hermistonmouth"], ["state", "Montana"], ["zip", "39008-7161"], ["phone_number", "648-350-8035"], ["tag", "Heavy Duty Iron Hat"], ["close_date", "2017-08-30"], ["description", "You can't parse the sensor without bypassing the haptic EXE microchip!"], ["user_id", 58], ["created_at", "2017-08-11 00:36:01.318584"], ["updated_at", "2017-08-11 00:36:01.318584"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Howell, Hansen and Jenkins"], ["address", "690 Vance Walks"], ["city", "Lake Hillaryfort"], ["state", "Washington"], ["zip", "72569-5688"], ["phone_number", "(174) 932-8806"], ["tag", "Ergonomic Concrete Shirt"], ["close_date", "2017-08-16"], ["description", "You can't compress the transmitter without transmitting the redundant SAS program!"], ["user_id", 33], ["created_at", "2017-08-11 00:36:01.328417"], ["updated_at", "2017-08-11 00:36:01.328417"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Larkin-Gerhold"], ["address", "2342 Howell Highway"], ["city", "Goldnerland"], ["state", "Montana"], ["zip", "97831"], ["phone_number", "(232) 736-8905"], ["tag", "Aerodynamic Rubber Coat"], ["close_date", "2017-08-29"], ["description", "The GB microchip is down, parse the virtual circuit so we can quantify the TCP bus!"], ["user_id", 53], ["created_at", "2017-08-11 00:36:01.337112"], ["updated_at", "2017-08-11 00:36:01.337112"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Deckow LLC"], ["address", "3251 Barney Square"], ["city", "Lylaborough"], ["state", "Idaho"], ["zip", "17309-7698"], ["phone_number", "1-603-389-9003"], ["tag", "Sleek Iron Computer"], ["close_date", "2017-08-27"], ["description", "The RSS hard drive is down, override the haptic monitor so we can back up the RAM program!"], ["user_id", 51], ["created_at", "2017-08-11 00:36:01.345786"], ["updated_at", "2017-08-11 00:36:01.345786"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Kshlerin Group"], ["address", "2209 Arielle Dale"], ["city", "Parkerland"], ["state", "Connecticut"], ["zip", "94575"], ["phone_number", "1-519-548-9017"], ["tag", "Mediocre Marble Bag"], ["close_date", "2017-08-24"], ["description", "Use the virtual SQL monitor, then you can reboot the cross-platform interface!"], ["user_id", 60], ["created_at", "2017-08-11 00:36:01.355546"], ["updated_at", "2017-08-11 00:36:01.355546"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Bernier LLC"], ["address", "4603 Ariane Court"], ["city", "East Felipe"], ["state", "Mississippi"], ["zip", "59586-3944"], ["phone_number", "560-752-7278"], ["tag", "Heavy Duty Plastic Wallet"], ["close_date", "2017-08-23"], ["description", "The SQL capacitor is down, input the mobile sensor so we can transmit the THX program!"], ["user_id", 39], ["created_at", "2017-08-11 00:36:01.363921"], ["updated_at", "2017-08-11 00:36:01.363921"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Hegmann, Labadie and Murazik"], ["address", "42411 Susana Expressway"], ["city", "Vergiefort"], ["state", "Montana"], ["zip", "49695"], ["phone_number", "(391) 392-4829"], ["tag", "Synergistic Wooden Computer"], ["close_date", "2017-08-28"], ["description", "The IB feed is down, reboot the auxiliary transmitter so we can index the JBOD array!"], ["user_id", 31], ["created_at", "2017-08-11 00:36:01.372494"], ["updated_at", "2017-08-11 00:36:01.372494"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "posts" ("name", "address", "city", "state", "zip", "phone_number", "tag", "close_date", "description", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["name", "Weber-Auer"], ["address", "5729 Altenwerth Park"], ["city", "Kassulkefurt"], ["state", "West Virginia"], ["zip", "31520"], ["phone_number", "(402) 716-0901"], ["tag", "Incredible Granite Bench"], ["close_date", "2017-08-29"], ["description", "Use the digital PCI driver, then you can bypass the online sensor!"], ["user_id", 22], ["created_at", "2017-08-11 00:36:01.381215"], ["updated_at", "2017-08-11 00:36:01.381215"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 37], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "There is no need to try catching Chuck Norris' exceptions for recovery; every single throw he does is fatal."], ["user_id", 37], ["post_id", 22], ["created_at", "2017-08-11 00:36:01.415764"], ["updated_at", "2017-08-11 00:36:01.415764"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can't test for equality because he has no equal."], ["user_id", 45], ["post_id", 24], ["created_at", "2017-08-11 00:36:01.427247"], ["updated_at", "2017-08-11 00:36:01.427247"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "There is no need to try catching Chuck Norris' exceptions for recovery; every single throw he does is fatal."], ["user_id", 43], ["post_id", 2], ["created_at", "2017-08-11 00:36:01.437449"], ["updated_at", "2017-08-11 00:36:01.437449"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris does not use revision control software. None of his code has ever needed revision."], ["user_id", 32], ["post_id", 9], ["created_at", "2017-08-11 00:36:01.447404"], ["updated_at", "2017-08-11 00:36:01.447404"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can access private methods."], ["user_id", 8], ["post_id", 22], ["created_at", "2017-08-11 00:36:01.457828"], ["updated_at", "2017-08-11 00:36:01.457828"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 35], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can access private methods."], ["user_id", 35], ["post_id", 31], ["created_at", "2017-08-11 00:36:01.468186"], ["updated_at", "2017-08-11 00:36:01.468186"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris does not use revision control software. None of his code has ever needed revision."], ["user_id", 23], ["post_id", 19], ["created_at", "2017-08-11 00:36:01.478524"], ["updated_at", "2017-08-11 00:36:01.478524"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't program with a keyboard. He stares the computer down until it does what he wants."], ["user_id", 44], ["post_id", 17], ["created_at", "2017-08-11 00:36:01.488879"], ["updated_at", "2017-08-11 00:36:01.488879"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write infinite recursion functions... and have them return."], ["user_id", 58], ["post_id", 21], ["created_at", "2017-08-11 00:36:01.501296"], ["updated_at", "2017-08-11 00:36:01.501296"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't need the cloud to scale his applications, he uses his laptop."], ["user_id", 14], ["post_id", 28], ["created_at", "2017-08-11 00:36:01.511223"], ["updated_at", "2017-08-11 00:36:01.511223"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can spawn threads that complete before they are started."], ["user_id", 20], ["post_id", 39], ["created_at", "2017-08-11 00:36:01.521383"], ["updated_at", "2017-08-11 00:36:01.521383"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write multi-threaded applications with a single thread."], ["user_id", 9], ["post_id", 2], ["created_at", "2017-08-11 00:36:01.531298"], ["updated_at", "2017-08-11 00:36:01.531298"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' beard is immutable."], ["user_id", 31], ["post_id", 14], ["created_at", "2017-08-11 00:36:01.541547"], ["updated_at", "2017-08-11 00:36:01.541547"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 58], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write infinite recursion functions... and have them return."], ["user_id", 58], ["post_id", 20], ["created_at", "2017-08-11 00:36:01.551600"], ["updated_at", "2017-08-11 00:36:01.551600"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris went out of an infinite loop."], ["user_id", 55], ["post_id", 5], ["created_at", "2017-08-11 00:36:01.561505"], ["updated_at", "2017-08-11 00:36:01.561505"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "You don't disable the Chuck Norris plug-in, it disables you."], ["user_id", 55], ["post_id", 23], ["created_at", "2017-08-11 00:36:01.577666"], ["updated_at", "2017-08-11 00:36:01.577666"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "The only pattern Chuck Norris knows is God Object."], ["user_id", 38], ["post_id", 2], ["created_at", "2017-08-11 00:36:01.590401"], ["updated_at", "2017-08-11 00:36:01.590401"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 54], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "You don't disable the Chuck Norris plug-in, it disables you."], ["user_id", 54], ["post_id", 1], ["created_at", "2017-08-11 00:36:01.604039"], ["updated_at", "2017-08-11 00:36:01.604039"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "There is no Esc key on Chuck Norris' keyboard, because no one escapes Chuck Norris."], ["user_id", 50], ["post_id", 16], ["created_at", "2017-08-11 00:36:01.616334"], ["updated_at", "2017-08-11 00:36:01.616334"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't use web standards as the web will conform to him."], ["user_id", 12], ["post_id", 10], ["created_at", "2017-08-11 00:36:01.627837"], ["updated_at", "2017-08-11 00:36:01.627837"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't believe in floating point numbers because they can't be typed on his binary keyboard."], ["user_id", 45], ["post_id", 26], ["created_at", "2017-08-11 00:36:01.638565"], ["updated_at", "2017-08-11 00:36:01.638565"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 33], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't use web standards as the web will conform to him."], ["user_id", 33], ["post_id", 30], ["created_at", "2017-08-11 00:36:01.649213"], ["updated_at", "2017-08-11 00:36:01.649213"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write infinite recursion functions... and have them return."], ["user_id", 5], ["post_id", 11], ["created_at", "2017-08-11 00:36:01.660892"], ["updated_at", "2017-08-11 00:36:01.660892"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris is immutable. If something's going to change, it's going to have to be the rest of the universe."], ["user_id", 9], ["post_id", 40], ["created_at", "2017-08-11 00:36:01.673689"], ["updated_at", "2017-08-11 00:36:01.673689"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 38], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris hosting is 101% uptime guaranteed."], ["user_id", 38], ["post_id", 15], ["created_at", "2017-08-11 00:36:01.685314"], ["updated_at", "2017-08-11 00:36:01.685314"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 48], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can compile syntax errors."], ["user_id", 48], ["post_id", 5], ["created_at", "2017-08-11 00:36:01.695917"], ["updated_at", "2017-08-11 00:36:01.695917"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 61], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't need a java compiler, he goes straight to .war"], ["user_id", 61], ["post_id", 20], ["created_at", "2017-08-11 00:36:01.707954"], ["updated_at", "2017-08-11 00:36:01.707954"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can't test for equality because he has no equal."], ["user_id", 51], ["post_id", 40], ["created_at", "2017-08-11 00:36:01.719022"], ["updated_at", "2017-08-11 00:36:01.719022"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris is immutable. If something's going to change, it's going to have to be the rest of the universe."], ["user_id", 10], ["post_id", 14], ["created_at", "2017-08-11 00:36:01.730067"], ["updated_at", "2017-08-11 00:36:01.730067"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can unit test an entire application with a single assert."], ["user_id", 7], ["post_id", 5], ["created_at", "2017-08-11 00:36:01.740514"], ["updated_at", "2017-08-11 00:36:01.740514"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write infinite recursion functions... and have them return."], ["user_id", 13], ["post_id", 1], ["created_at", "2017-08-11 00:36:01.751063"], ["updated_at", "2017-08-11 00:36:01.751063"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't get compiler errors, the language changes itself to accommodate Chuck Norris."], ["user_id", 24], ["post_id", 7], ["created_at", "2017-08-11 00:36:01.762046"], ["updated_at", "2017-08-11 00:36:01.762046"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris does not use exceptions when programming. He has not been able to identify any of his code that is not exceptional."], ["user_id", 43], ["post_id", 40], ["created_at", "2017-08-11 00:36:01.772564"], ["updated_at", "2017-08-11 00:36:01.772564"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris hosting is 101% uptime guaranteed."], ["user_id", 31], ["post_id", 12], ["created_at", "2017-08-11 00:36:01.783060"], ["updated_at", "2017-08-11 00:36:01.783060"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't have disk latency because the hard drive knows to hurry the hell up."], ["user_id", 23], ["post_id", 26], ["created_at", "2017-08-11 00:36:01.794162"], ["updated_at", "2017-08-11 00:36:01.794162"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' beard is immutable."], ["user_id", 9], ["post_id", 6], ["created_at", "2017-08-11 00:36:01.805013"], ["updated_at", "2017-08-11 00:36:01.805013"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "You don't disable the Chuck Norris plug-in, it disables you."], ["user_id", 27], ["post_id", 2], ["created_at", "2017-08-11 00:36:01.815898"], ["updated_at", "2017-08-11 00:36:01.815898"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "No statement can catch the ChuckNorrisException."], ["user_id", 10], ["post_id", 9], ["created_at", "2017-08-11 00:36:01.827066"], ["updated_at", "2017-08-11 00:36:01.827066"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' keyboard doesn't have a F1 key, the computer asks him for help."], ["user_id", 18], ["post_id", 2], ["created_at", "2017-08-11 00:36:01.837894"], ["updated_at", "2017-08-11 00:36:01.837894"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 50], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris's first program was kill -9."], ["user_id", 50], ["post_id", 12], ["created_at", "2017-08-11 00:36:01.849709"], ["updated_at", "2017-08-11 00:36:01.849709"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can use GOTO as much as he wants to. Telling him otherwise is considered harmful."], ["user_id", 12], ["post_id", 19], ["created_at", "2017-08-11 00:36:01.860468"], ["updated_at", "2017-08-11 00:36:01.860468"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris's first program was kill -9."], ["user_id", 31], ["post_id", 28], ["created_at", "2017-08-11 00:36:01.871278"], ["updated_at", "2017-08-11 00:36:01.871278"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' keyboard doesn't have a F1 key, the computer asks him for help."], ["user_id", 56], ["post_id", 22], ["created_at", "2017-08-11 00:36:01.881778"], ["updated_at", "2017-08-11 00:36:01.881778"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 56], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' preferred IDE is hexedit."], ["user_id", 56], ["post_id", 35], ["created_at", "2017-08-11 00:36:01.892185"], ["updated_at", "2017-08-11 00:36:01.892185"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Anonymous methods and anonymous types are really all called Chuck Norris. They just don't like to boast."], ["user_id", 11], ["post_id", 30], ["created_at", "2017-08-11 00:36:01.905105"], ["updated_at", "2017-08-11 00:36:01.905105"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "The programs that Chuck Norris writes don't have version numbers because he only writes them once. If a user reports a bug or has a feature request they don't live to see the sun set."], ["user_id", 60], ["post_id", 19], ["created_at", "2017-08-11 00:36:01.916175"], ["updated_at", "2017-08-11 00:36:01.916175"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't have performance bottlenecks. He just makes the universe wait its turn."], ["user_id", 43], ["post_id", 4], ["created_at", "2017-08-11 00:36:01.926892"], ["updated_at", "2017-08-11 00:36:01.926892"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 51], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "You don't disable the Chuck Norris plug-in, it disables you."], ["user_id", 51], ["post_id", 23], ["created_at", "2017-08-11 00:36:01.938550"], ["updated_at", "2017-08-11 00:36:01.938550"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' keyboard doesn't have a F1 key, the computer asks him for help."], ["user_id", 2], ["post_id", 4], ["created_at", "2017-08-11 00:36:01.949668"], ["updated_at", "2017-08-11 00:36:01.949668"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris."], ["user_id", 7], ["post_id", 26], ["created_at", "2017-08-11 00:36:01.960196"], ["updated_at", "2017-08-11 00:36:01.960196"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't have disk latency because the hard drive knows to hurry the hell up."], ["user_id", 15], ["post_id", 27], ["created_at", "2017-08-11 00:36:01.970875"], ["updated_at", "2017-08-11 00:36:01.970875"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 55], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris's first program was kill -9."], ["user_id", 55], ["post_id", 30], ["created_at", "2017-08-11 00:36:01.981433"], ["updated_at", "2017-08-11 00:36:01.981433"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 36], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris rewrote the Google search engine from scratch."], ["user_id", 36], ["post_id", 26], ["created_at", "2017-08-11 00:36:01.991829"], ["updated_at", "2017-08-11 00:36:01.991829"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't use a computer because a computer does everything slower than Chuck Norris."], ["user_id", 17], ["post_id", 27], ["created_at", "2017-08-11 00:36:02.002654"], ["updated_at", "2017-08-11 00:36:02.002654"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris finished World of Warcraft."], ["user_id", 28], ["post_id", 39], ["created_at", "2017-08-11 00:36:02.014054"], ["updated_at", "2017-08-11 00:36:02.014054"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 60], ["LIMIT", 1]]
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris rewrote the Google search engine from scratch."], ["user_id", 60], ["post_id", 9], ["created_at", "2017-08-11 00:36:02.024621"], ["updated_at", "2017-08-11 00:36:02.024621"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can write infinite recursion functions... and have them return."], ["user_id", 43], ["post_id", 34], ["created_at", "2017-08-11 00:36:02.035894"], ["updated_at", "2017-08-11 00:36:02.035894"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris' beard is immutable."], ["user_id", 7], ["post_id", 35], ["created_at", "2017-08-11 00:36:02.047145"], ["updated_at", "2017-08-11 00:36:02.047145"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris can use GOTO as much as he wants to. Telling him otherwise is considered harmful."], ["user_id", 39], ["post_id", 40], ["created_at", "2017-08-11 00:36:02.058434"], ["updated_at", "2017-08-11 00:36:02.058434"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "comments" ("comment", "user_id", "post_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["comment", "Chuck Norris doesn't need the cloud to scale his applications, he uses his laptop."], ["user_id", 28], ["post_id", 27], ["created_at", "2017-08-11 00:36:02.069052"], ["updated_at", "2017-08-11 00:36:02.069052"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/login" for 127.0.0.1 at 2017-08-10 17:36:51 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"3yZX3u374zxfFEEMA6kA4jvdiHM+Kn5mJQlbWaSkPAhCNP0xsZIpsJHT5O6z6naLIbyn9U1s58za3lr72HOBJA==", "session"=>{"email"=>"ramiro.murazik@huelblock.io", "password"=>"[FILTERED]"}, "commit"=>"Save Session"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "ramiro.murazik@huelblock.io"], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.6ms)
+
+
+  
+BCrypt::Errors::InvalidHash (invalid hash):
+  
+app/controllers/sessions_controller.rb:9:in `create'
+Started GET "/" for 127.0.0.1 at 2017-08-10 17:37:40 -0700
+Processing by PostsController#index as HTML
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC[0m
+  Rendered posts/index.html.erb within layouts/application (26.0ms)
+Completed 200 OK in 63ms (Views: 54.6ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/posts/23" for 127.0.0.1 at 2017-08-10 17:37:43 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"23"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mCACHE Post Load (0.0ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 23]]
+  Rendered posts/show.html.erb within layouts/application (39.2ms)
+Completed 200 OK in 86ms (Views: 68.9ms | ActiveRecord: 4.7ms)
+
+
