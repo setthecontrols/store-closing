@@ -4,6 +4,6 @@ class User < ApplicationRecord
 
   #something with the validates is breaking the app.
   has_secure_password
-  # validates: :email, :user_id, uniqueness: true
-  # validates: :first_name, :last_name, :password_digest, presence: true
+  validates :email, :username, uniqueness: true
+  validates :first_name, :last_name, :password_digest, presence: true
 end
