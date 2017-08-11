@@ -1,1 +1,36 @@
-<h1>single post page</h1>
+<center>
+<h1><%= @post.name %></h1>
+<h2><span style="color:red">Closing Date: </span> <%=@post.close_date%></h2>
+</center>
+
+<br>
+
+<div class="container">
+  <div class="well">
+    <center>
+  <h2>Information about this business</h2>
+  <h3>Address:</h3>
+  <h4><%=@post.address%>
+  <br>
+  <%=@post.city%>
+  <br>
+   <%=@post.state%>, <%=@post.zip%></h4>
+  <br>
+  <h3>Phone Number:</h3> <h4><%=@post.phone_number%></h4>
+  <br>
+  Description: <%=@post.description%>
+  </div>
+</div>
+</center>
+<br>
+<div class="container">
+  <div class="well">
+    <center>
+    <h2>Comments</h2>
+  </center>
+      <%@post.comments.each do |comment|%>
+    <ul><h6><%= comment.comment %></h6></ul>
+      <%end%>
+  </div>
+</div>
+<strong>tags: </strong> <%= @post.tag %>
