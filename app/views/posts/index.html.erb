@@ -1,9 +1,12 @@
 <center>
 <h1>yo SHit SUCKS epic closing of every store</h1>
+<br>
 
-<% @posts.each do |post|%>
-<li>
-  <%= link_to post.name, post_path(post) %>
-</li>
-<%end%>
+  <div class="container">
+    <div class="list-group">
+        <% @posts.each do |post|%>
+        <%= link_to post.name, post_path(post), :class => "list-group-item" %>
+    <%end%>
+    </div>
+  </div>
 </center>
