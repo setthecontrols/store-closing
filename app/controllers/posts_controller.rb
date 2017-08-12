@@ -7,11 +7,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @item = current_user.items.build
   end
 
   def create
-    @post = Post.new(post_params)
+    @item = current_user.items.build(item_params)
 
     if @post.save
       redirect_to @post, notice: "Yes! It was posted!"

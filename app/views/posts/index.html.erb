@@ -5,7 +5,6 @@
   <div class="container">
     <div class="list-group">
         <% @posts.each do |post|%>
-        <%= link_to post.name, post_path(post), :class => "list-group-item" %>
     <%end%>
     </div>
   </div>
