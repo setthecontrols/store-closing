@@ -1,11 +1,12 @@
-<center>
+
 <h1>yo SHit SUCKS epic closing of every store</h1>
 <br>
 
   <div class="container">
     <div class="list-group">
         <% @posts.each do |post|%>
-    <%end%>
+           <%= link_to post.name, "/users/#{post.user_id}/posts/#{post.id}", :class => "list-group-item" %><br>
+        <%end%>
     </div>
   </div>
 </center>
