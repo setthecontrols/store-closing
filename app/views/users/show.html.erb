@@ -1,6 +1,7 @@
 <h1>Welcome <%= @user.email %> </h1>
 
 <!-- link to new post here
+add something
  -->
 <div class="col-md-10 col-md-offset-1">
   <% @user.posts.order("created_at DESC").each do |post|%>
