@@ -28,8 +28,6 @@ include SessionsHelper
 
     def session_params
       params.require(:user).permit(:email, :password, :password_confirmation)
-      params.require(:customer).permit(:first_name, :last_name, :business_no, :email, :password, :password_confirmation :business_id) #replace company with company ID
-
     end
 
 end
