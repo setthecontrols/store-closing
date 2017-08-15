@@ -5,16 +5,13 @@ include SessionsHelper
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email].downcase)
+    @user = User.find_by_email(params[:session][:email])
     if @user && @user.authenticate(params[:session][:password])
-
-    # @user = User.find_by(email: params[:session][:email].downcase)
-    # if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      flash.notice = "Welcome back, '#{@user.username}'!"
+      flash.notice = "Welcome back '#{@user.username}'!!!"
       render 'users/show'
     else
-      flash.notice = "Login failed.  Please try again."
+      flash.notice = "Login failed....please try again."
       redirect_to '/login'
     end
   end
@@ -27,7 +24,7 @@ include SessionsHelper
   private
 
     def session_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password)
     end
 
 end
