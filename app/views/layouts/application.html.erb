@@ -15,13 +15,16 @@
         </div>
           <ul class="nav navbar-nav navbar-right">
             <li>
+              <% if @user == nil %>
                 <%= link_to "Join", new_user_path %>
             </li>
             <li>
-              <%= link_to "Log In", new_session_path %>
+                <%= link_to "Log In", new_session_path %>
             </li>
+              <% elsif %>
             <li>
-              <%= link_to "Logout",  logout_path %>
+                <%= link_to "Logout",  logout_path %>
+              <% end %>
             </li>
           </ul>
     </nav>
