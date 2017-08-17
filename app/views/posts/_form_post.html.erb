@@ -1,6 +1,16 @@
 
 <div class="form-wrapper">
-  <%= form_for user_post_path(id: to_param) do |f| %>
+  <%= form_for new_user_post_path(@posts) do |f| %>
+    <% if @post.errors.any? %>
+      <div id="errors">
+        <h2><%= pluralize(@post.errors.count, "error") %> stopped this post from saving</h2>
+        <ul>
+          <% @post.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
     <div class="form-group text-center">
       <%= f.label :name %><br>
       <%= f.text_field(:name) %>
